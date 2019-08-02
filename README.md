@@ -1,4 +1,4 @@
-# SKG Base Package (SBP) - Source code base with AWS architecture
+# SKG Base Package (SBP) - Source code base with AWS infrastructure
 
 ## Introduction
 - Who is target for using SBP?
