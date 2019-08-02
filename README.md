@@ -18,9 +18,9 @@
 - Which are features demonstrated?
 - Where can you start with Sample?
 - Specification
-- Description
-- Components
-- Workflow
+  - Description
+  - Components
+  - Workflow
 ### Backend implementation
 - Biz parts description
 - Source code setup
