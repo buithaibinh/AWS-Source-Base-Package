@@ -12,7 +12,7 @@ There are many ways to start a new project without SBP. But all of them have the
 
 The following will show a sample workflow at my company.
 
-![alt text](https://skglobal-jsc/AWS-Source-Base-Package/blob/master/docs/workflow.png "workflow without SBP")
+![alt text](https://raw.githubusercontent.com/buithaibinh/AWS-Source-Base-Package/master/docs/workflow.png "workflow without SBP")
 
 In this workflow, the developer MUST do some critical config tasks by manual.
 In case, the project needs to re-start, the developer MUST start from (1) and not re-use any steps.
