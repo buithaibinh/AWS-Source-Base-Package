@@ -38,20 +38,33 @@ The SBP is Infrastructure as Code (IaC). The SBP makes it easy to create, config
 
 ### Authentication
 
-Add user sign-up, sign-in, and access control to mobile and web applications (Using Amazon Cognito).
+- Add user sign-up, sign-in, and access control to mobile and web applications (Using Amazon Cognito).
+- Social and enterprise identity federation : Facebook, twitter and google
+- Easy integration with your app
+- User management built-in
 
 ### Analytics
 
-Drop-in analytics to track user sessions, attributes, and in-app metrics (PowUsing Amazon Pinpoint).
+- Drop-in analytics to track user sessions, attributes, and in-app metrics (PowUsing Amazon Pinpoint).
+- Aggregate, visualize, and customize data related to your customers and your engagements.
 
 ### Notifications
 
-Integrate push notifications with analytics and targeting built-in (Using Amazon Pinpoint + SNS).
+- Integrate push notifications with analytics and targeting built-in.
+- AWS SNS and Amazon Pinpoint
+- Support both web and mobile(android, iOS)
+- Replace Firebase FCM, APN, Onesignal … (Using Amazon Pinpoint + SNS).
 
 ### Storage
 
-Manage user content securely in the cloud (Using Amazon S3).
+- Manage user content securely in the cloud (Using Amazon S3).
+- Built-in upload/download APIs
+- Integrated with your user pool. Role base supported
 
+### System Monitoring
+
+- AWS X-Ray
+- AWS CloudWatch
 
 # Setup
 
@@ -442,17 +455,23 @@ resources:
 
 # How to add your Biz parts
 ## Demonstrate with Simple Sample
-- Purpose
-- Which are features demonstrated?
-- Where can you start with Sample?
-- Specification
-  - Description
-  - Components
-  - Workflow
+
+### Feature Support in this repository
+
+![alt text](https://raw.githubusercontent.com/buithaibinh/AWS-Source-Base-Package/master/docs/functions.png "Feature Support in this repository")
+
 ### Backend implementation
-- Biz parts description
-- Source code setup
-- Step by Step
+
+#### Quick Start
+
+```
+cd samples/app-backend
+yarn deploy
+```
+
+Keep output file `aws-exports.json` as reference in front-end app
+
+
 ### Frontend implementation
 - Biz parts description
 - Source code setup
@@ -461,7 +480,6 @@ resources:
 - Biz parts description
 - Source code setup
 - Step by Step
-
 
 Note:
 - Repo structure
