@@ -1,13 +1,31 @@
 # SKG Base Package (SBP) - Source code base with AWS infrastructure
 
-# Introduction
+*Table of contents*
+1. [Introduction](#intro)
+   1. [Who is target for using SBP](#intro1)
+   1. [Normal workflow without SBP](#intro2)
+   1. [What is SBP?](#intro3)
+   1. [What is SBP Benefits?](#intro4)    
+   1. [What is SBP Feautures?](#intro5)    
+1. [Setup](#setup)
+   1. [Prerequisites](#setup1)
+   1. [Create and Deploy your First App](#setup2)
+   1. [Runtime-configuration](#setup3)
+   1. [More configuration](#setup4)   
+1. [How to add your Biz parts](#sample)
+   1. [Demonstrate with Simple Sample](#sample1)   
+   1. [Backend implementation](#sample2)   
+   1. [Frontend implementation](#sample3)   
+   1. [Backend implementation](#sample4)   
+   
+# Introduction<a name="intro"></a>
 
-## Who is target for using SBP?
+## Who is target for using SBP?<a name="intro1"></a>
 
    The SBP is using AWS CloudFormation as Infrastructure as Code (IaC). So the SBP requires the user to play as a developer role. The user MUST have basic knowledge about AWS CloudFormation.
 Besides that, The SBP using a [serverless framework](https://serverless.com/) for development and coding. So basic knowledge about the serverless framework is required too.
 
-## Normal workflow without SBP
+## Normal workflow without SBP<a name="intro2"></a>
 There are many ways to start a new project without SBP. But all of them have the same point is "too many steps have to do by manual".
 
 The following will show a sample workflow at my company.
@@ -18,12 +36,12 @@ In this workflow, the developer MUST do some critical config tasks by manual.
 In case, the project needs to re-start, the developer MUST start from (1) and not re-use any steps.
 Some time, delete resources of test env is difficult. Resources are scattered and do not link
 
-## What is SBP?
+## What is SBP?<a name="intro3"></a>
 
 The SBP is Infrastructure as Code (IaC). The SBP makes it easy to create, configure, and implement mobile and web apps powered by AWS.  The SBP allows you quickly set up authentication, analytics, push notifications...with a few commands.
 
 
-## What is SBP Benefits?
+## What is SBP Benefits?<a name="intro4"></a>
 
 - A package source code with many base functions: Authentication, Monitoring, Analytics, Notifications...
 - CI/CD integration. Auto test, deploy to AWS
@@ -34,7 +52,7 @@ The SBP is Infrastructure as Code (IaC). The SBP makes it easy to create, config
 - Monitoring: The Base system included System Monitoring as default. Easy tracking, monitoring system
 - Microservice 100%: Pay on demand. No traffic, no pay
 
-## What is SBP Features?
+## What is SBP Features?<a name="intro5"></a>
 
 ### Authentication
 
@@ -66,9 +84,9 @@ The SBP is Infrastructure as Code (IaC). The SBP makes it easy to create, config
 - AWS X-Ray
 - AWS CloudWatch
 
-# Setup
+# Setup<a name="setup"></a>
 
-## Prerequisites
+## Prerequisites<a name="setup1"></a>
 There are a few prerequisites you need to install and configure:
 
   - [Initial Setup](#initial-setup)
@@ -129,7 +147,7 @@ Default output format [None]: ENTER
 
 Credentials are stored in INI format in `~/.aws/credentials`, which you can edit directly if needed. You can change the path to the credentials file via the AWS_SHARED_CREDENTIALS_FILE environment variable. Read more about that file in the [AWS documentation](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files)
 
-## Create and Deploy your First App
+## Create and Deploy your First App<a name="setup2"></a>
 
 Now that you’ve completed your setup, let’s create and deploy a serverless Service from the BASE.
 
@@ -160,7 +178,7 @@ Use this command to deploy your service for the first time and after you make ch
 serverless deploy -v
 ```
 
-## Runtime-configuration
+## Runtime-configuration<a name="setup3"></a>
 
 ### Config push notification
 
@@ -209,7 +227,7 @@ After deploy successful, a config file will be created at `output/aws-exports.js
 
 ```
 
-## More configuration
+## More configuration<a name="setup4"></a>
 
 
 ### Configs/auth.json Reference
@@ -453,16 +471,16 @@ resources:
 
 ```
 
-# How to add your Biz parts
-## Demonstrate with Simple Sample
+# How to add your Biz parts<a name="sample"></a>
+## Demonstrate with Simple Sample<a name="sample1"></a>
 
 ### Feature Support in this repository
 
 ![alt text](https://raw.githubusercontent.com/buithaibinh/AWS-Source-Base-Package/master/docs/functions.png "Feature Support in this repository")
 
-### Backend implementation
+## Backend implementation<a name="sample2"></a>
 
-#### Quick Start
+### Quick Start
 
 ```
 cd samples/app-backend
@@ -472,11 +490,11 @@ yarn deploy
 Keep output file `aws-exports.json` as reference in front-end app
 
 
-### Frontend implementation
+## Frontend implementation<a name="sample3"></a>
 - Biz parts description
 - Source code setup
 - Step by Step
-### Mobile implementation
+## Mobile implementation<a name="sample4"></a>
 - Biz parts description
 - Source code setup
 - Step by Step
