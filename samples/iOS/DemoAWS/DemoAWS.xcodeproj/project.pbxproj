@@ -18,7 +18,6 @@
 		27441D9322F916B30045CBAD /* ConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27441D9222F916B30045CBAD /* ConfirmVC.swift */; };
 		27441DAB22F92D130045CBAD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27441DAA22F92D130045CBAD /* Constant.swift */; };
 		27441DB122F936A20045CBAD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27441DB022F936A20045CBAD /* UserInfo.swift */; };
-		27441DC022F9843D0045CBAD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27441DBF22F9843D0045CBAD /* API.swift */; };
 		2778B36A22FC339400146A3D /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2778B36822FC339400146A3D /* ProfileCell.swift */; };
 		2778B36B22FC339400146A3D /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2778B36922FC339400146A3D /* ProfileCell.xib */; };
 		27FE9A872304F1430019F9C3 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE9A862304F1430019F9C3 /* BaseVC.swift */; };
@@ -332,7 +331,6 @@
 				27441D7D22F912860045CBAD /* HomeVC.swift in Sources */,
 				27441D7B22F912860045CBAD /* AppDelegate.swift in Sources */,
 				27441D8F22F9163D0045CBAD /* SignInVC.swift in Sources */,
-				27441DC022F9843D0045CBAD /* API.swift in Sources */,
 				27441DB122F936A20045CBAD /* UserInfo.swift in Sources */,
 				2778B36A22FC339400146A3D /* ProfileCell.swift in Sources */,
 				27FE9A872304F1430019F9C3 /* BaseVC.swift in Sources */,
