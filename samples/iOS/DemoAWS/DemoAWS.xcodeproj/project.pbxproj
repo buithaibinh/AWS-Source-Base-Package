@@ -53,7 +53,6 @@
 		27441DAA22F92D130045CBAD /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		27441DAC22F930710045CBAD /* DemoAWS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DemoAWS.entitlements; sourceTree = "<group>"; };
 		27441DB022F936A20045CBAD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		27441DBF22F9843D0045CBAD /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		2778B36822FC339400146A3D /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		2778B36922FC339400146A3D /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		27FE9A862304F1430019F9C3 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
@@ -103,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				2778B38B2303F1A600146A3D /* Common */,
-				2778B38A2303F19500146A3D /* Service */,
 				2778B3892303F18C00146A3D /* Model */,
 				2778B38C2303F1B100146A3D /* View */,
 				2778B38D2303F1CA00146A3D /* Controller */,
@@ -121,14 +119,6 @@
 				27441DB022F936A20045CBAD /* UserInfo.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		2778B38A2303F19500146A3D /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				27441DBF22F9843D0045CBAD /* API.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		2778B38B2303F1A600146A3D /* Common */ = {
