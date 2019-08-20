@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="color_google">#2D9CDB</color>
+    <color name="color_facebook">#0061BA</color>
+    <color name="error">#D40F0F</color>
+    <color name="success">#31BD69</color>
+    <color name="black">#000000</color>
+    <color name="secondary">#666666</color>
+    <color name="footnote">#8A8A8F</color>
+    <color name="content">#C8C7CC</color>
+    <color name="screen">#EFEFF4</color>
+    <color name="background">#F9F9F9</color>
+    <color name="white">#FFFFFF</color>
+</resources>
