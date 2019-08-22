@@ -1,0 +1,22 @@
+# this is an auto generated file. This will be overwritten
+subscription OnUpdateUser {
+  onUpdateUser {
+    Username
+    Attributes {
+      Name
+      Value
+    }
+    UserCreateDate
+    UserLastModifiedDate
+    Enabled
+    UserStatus
+    groups {
+      GroupName
+      UserPoolId
+      Description
+      Precedence
+      CreationDate
+      LastModifiedDate
+    }
+  }
+}
