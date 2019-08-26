@@ -1,0 +1,56 @@
+{
+    "UserAgent": "aws-amplify/cli",
+    "Version": "0.1.0",
+    "IdentityManager": {
+        "Default": {}
+    },
+    "AppSync": {
+        "Default": {
+            "ApiUrl": "your_api_url",
+            "Region": "your_region",
+            "AuthMode": "AMAZON_COGNITO_USER_POOLS",
+            "ClientDatabasePrefix": "your_databse_prefix"
+        }
+    },
+    "CredentialsProvider": {
+        "CognitoIdentity": {
+            "Default": {
+                "PoolId": "your_identity_pool_id",
+                "Region": "your_region"
+            }
+        }
+    },
+    "CognitoUserPool": {
+        "Default": {
+            "PoolId": "your_user_pool_id",
+            "AppClientId": "your_user_app_client_id",
+            "AppClientSecret": "your_user_app_client_secret_id",
+            "Region": "your_region"
+        }
+    },
+    "Auth": {
+        "Default": {
+            "OAuth": {
+                "WebDomain": "your_auth_domain",
+                "AppClientId": "your_user_app_client_id",
+                "AppClientSecret": "your_user_app_client_secret_id",
+                "SignInRedirectURI": "myapp://",
+                "SignOutRedirectURI": "myapp://",
+                "Scopes": [
+                    "your_scope"
+                ]
+            }
+        }
+    },
+    "PinpointAnalytics": {
+        "Default": {
+            "AppId": "your_app_id",
+            "Region": "your_region"
+        }
+    },
+    "PinpointTargeting": {
+        "Default": {
+            "Region": "your_region"
+        }
+    }
+}

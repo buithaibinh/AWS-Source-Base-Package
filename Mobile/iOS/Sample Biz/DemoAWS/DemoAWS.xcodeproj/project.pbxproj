@@ -51,7 +51,6 @@
 		27441D9022F916580045CBAD /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		27441D9222F916B30045CBAD /* ConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmVC.swift; sourceTree = "<group>"; };
 		27441DAA22F92D130045CBAD /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		27441DAC22F930710045CBAD /* DemoAWS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DemoAWS.entitlements; sourceTree = "<group>"; };
 		27441DB022F936A20045CBAD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		2778B36822FC339400146A3D /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		2778B36922FC339400146A3D /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
@@ -125,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				27441D7A22F912860045CBAD /* AppDelegate.swift */,
-				27441DAC22F930710045CBAD /* DemoAWS.entitlements */,
 				27441D8C22F914EE0045CBAD /* awsconfiguration.json */,
 				27441DAA22F92D130045CBAD /* Constant.swift */,
 			);

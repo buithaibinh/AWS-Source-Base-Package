@@ -34,8 +34,8 @@
                 "WebDomain": "your_auth_domain",
                 "AppClientId": "your_user_app_client_id",
                 "AppClientSecret": "your_user_app_client_secret_id",
-                "SignInRedirectURI": "your_scheme",
-                "SignOutRedirectURI": "your_scheme",
+                "SignInRedirectURI": "myapp://",
+                "SignOutRedirectURI": "myapp://",
                 "Scopes": [
                     "your_scope"
                 ]
