@@ -83,8 +83,8 @@
 		270412372317A9CA0041702A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				27EAC4B82313BA2900675493 /* HomeVC.swift */,
 				270412392317AA1B0041702A /* BaseVC.swift */,
+				27EAC4B82313BA2900675493 /* HomeVC.swift */,
 				270412382317AA1B0041702A /* ConfirmVC.swift */,
 				2704123B2317AA1B0041702A /* SignInVC.swift */,
 				2704123A2317AA1B0041702A /* SignUpVC.swift */,
