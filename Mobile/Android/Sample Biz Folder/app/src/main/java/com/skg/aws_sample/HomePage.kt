@@ -5,7 +5,9 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
 import android.provider.MediaStore
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -63,6 +65,7 @@ class HomePage : AppCompatActivity(), View.OnClickListener {
     private var currentIndex: Int = -1
     //data of item  when click on item in the list user
     var dataItemClicked: AllUsersQuery.Item? = null
+    private var buttonHardBackClick = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -486,6 +489,20 @@ class HomePage : AppCompatActivity(), View.OnClickListener {
             //show progressbar when start update
             progressBar.visibility = View.VISIBLE
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            return if (buttonHardBackClick) {
+                this.finishAffinity()
+                true
+            } else {
+                buttonHardBackClick = true
+                Toast.makeText(this,"Please click again to exit app",Toast.LENGTH_LONG).show()
+                false
+            }
+        }
+        return false
     }
 
     override fun onDestroy() {
