@@ -120,7 +120,7 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onError(e: Exception?) {
                 this@LoginActivity.runOnUiThread {
-                    Toast.makeText(this@LoginActivity, e?.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@LoginActivity, "Please click again,because error from sdk", Toast.LENGTH_LONG).show()
                     progressBar.visibility = View.GONE
                 }
             }
@@ -168,7 +168,7 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onError(e: Exception?) {
                 this@LoginActivity.runOnUiThread {
-                    Toast.makeText(this@LoginActivity, e?.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@LoginActivity, "Please click again,because error from sdk", Toast.LENGTH_LONG).show()
                     progressBar.visibility = View.GONE
                 }
             }
