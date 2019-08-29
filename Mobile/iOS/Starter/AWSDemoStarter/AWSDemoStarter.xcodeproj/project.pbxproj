@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2704123C2317AA1B0041702A /* ConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270412382317AA1B0041702A /* ConfirmVC.swift */; };
+		2704123D2317AA1B0041702A /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270412392317AA1B0041702A /* BaseVC.swift */; };
+		2704123E2317AA1B0041702A /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2704123A2317AA1B0041702A /* SignUpVC.swift */; };
+		2704123F2317AA1B0041702A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2704123B2317AA1B0041702A /* SignInVC.swift */; };
+		270412412317AA2A0041702A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270412402317AA2A0041702A /* UserInfo.swift */; };
+		270412442317AA300041702A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270412422317AA300041702A /* ProfileCell.swift */; };
+		270412452317AA300041702A /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270412432317AA300041702A /* ProfileCell.xib */; };
+		270412472317ABB30041702A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270412462317ABB30041702A /* Constant.swift */; };
 		27EAC4B72313BA2900675493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EAC4B62313BA2900675493 /* AppDelegate.swift */; };
-		27EAC4B92313BA2900675493 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EAC4B82313BA2900675493 /* ViewController.swift */; };
+		27EAC4B92313BA2900675493 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EAC4B82313BA2900675493 /* HomeVC.swift */; };
 		27EAC4BC2313BA2900675493 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27EAC4BA2313BA2900675493 /* Main.storyboard */; };
 		27EAC4BE2313BA2B00675493 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27EAC4BD2313BA2B00675493 /* Assets.xcassets */; };
 		27EAC4C12313BA2B00675493 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27EAC4BF2313BA2B00675493 /* LaunchScreen.storyboard */; };
@@ -16,9 +24,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270412382317AA1B0041702A /* ConfirmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfirmVC.swift; path = "../../../../Sample Biz/DemoAWS/DemoAWS/Controller/ConfirmVC.swift"; sourceTree = "<group>"; };
+		270412392317AA1B0041702A /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseVC.swift; path = "../../../../Sample Biz/DemoAWS/DemoAWS/Controller/BaseVC.swift"; sourceTree = "<group>"; };
+		2704123A2317AA1B0041702A /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = "../../../../Sample Biz/DemoAWS/DemoAWS/Controller/SignUpVC.swift"; sourceTree = "<group>"; };
+		2704123B2317AA1B0041702A /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInVC.swift; path = "../../../../Sample Biz/DemoAWS/DemoAWS/Controller/SignInVC.swift"; sourceTree = "<group>"; };
+		270412402317AA2A0041702A /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfo.swift; path = "../../../../Sample Biz/DemoAWS/DemoAWS/Model/UserInfo.swift"; sourceTree = "<group>"; };
+		270412422317AA300041702A /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileCell.swift; path = "../../../../Sample Biz/DemoAWS/DemoAWS/View/ProfileCell.swift"; sourceTree = "<group>"; };
+		270412432317AA300041702A /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileCell.xib; path = "../../../../Sample Biz/DemoAWS/DemoAWS/View/ProfileCell.xib"; sourceTree = "<group>"; };
+		270412462317ABB30041702A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = "../../../../Sample Biz/DemoAWS/DemoAWS/Common/Constant.swift"; sourceTree = "<group>"; };
 		27EAC4B32313BA2900675493 /* AWSDemoStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AWSDemoStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EAC4B62313BA2900675493 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		27EAC4B82313BA2900675493 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		27EAC4B82313BA2900675493 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		27EAC4BB2313BA2900675493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27EAC4BD2313BA2B00675493 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27EAC4C02313BA2B00675493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +53,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		270412342317A9AE0041702A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				270412462317ABB30041702A /* Constant.swift */,
+				27EAC4C82313BA7400675493 /* awsconfiguration.json */,
+				27EAC4B62313BA2900675493 /* AppDelegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		270412352317A9BF0041702A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				270412402317AA2A0041702A /* UserInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		270412362317A9C20041702A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				270412422317AA300041702A /* ProfileCell.swift */,
+				270412432317AA300041702A /* ProfileCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		270412372317A9CA0041702A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				27EAC4B82313BA2900675493 /* HomeVC.swift */,
+				270412392317AA1B0041702A /* BaseVC.swift */,
+				270412382317AA1B0041702A /* ConfirmVC.swift */,
+				2704123B2317AA1B0041702A /* SignInVC.swift */,
+				2704123A2317AA1B0041702A /* SignUpVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		27EAC4AA2313BA2900675493 = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +111,10 @@
 		27EAC4B52313BA2900675493 /* AWSDemoStarter */ = {
 			isa = PBXGroup;
 			children = (
-				27EAC4C82313BA7400675493 /* awsconfiguration.json */,
-				27EAC4B62313BA2900675493 /* AppDelegate.swift */,
-				27EAC4B82313BA2900675493 /* ViewController.swift */,
+				270412342317A9AE0041702A /* Common */,
+				270412352317A9BF0041702A /* Model */,
+				270412362317A9C20041702A /* View */,
+				270412372317A9CA0041702A /* Controller */,
 				27EAC4BA2313BA2900675493 /* Main.storyboard */,
 				27EAC4BD2313BA2B00675493 /* Assets.xcassets */,
 				27EAC4BF2313BA2B00675493 /* LaunchScreen.storyboard */,
@@ -129,6 +185,7 @@
 				27EAC4C12313BA2B00675493 /* LaunchScreen.storyboard in Resources */,
 				27EAC4BE2313BA2B00675493 /* Assets.xcassets in Resources */,
 				27EAC4BC2313BA2900675493 /* Main.storyboard in Resources */,
+				270412452317AA300041702A /* ProfileCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +196,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27EAC4B92313BA2900675493 /* ViewController.swift in Sources */,
+				2704123C2317AA1B0041702A /* ConfirmVC.swift in Sources */,
+				27EAC4B92313BA2900675493 /* HomeVC.swift in Sources */,
+				270412472317ABB30041702A /* Constant.swift in Sources */,
+				2704123F2317AA1B0041702A /* SignInVC.swift in Sources */,
 				27EAC4B72313BA2900675493 /* AppDelegate.swift in Sources */,
+				2704123E2317AA1B0041702A /* SignUpVC.swift in Sources */,
+				270412442317AA300041702A /* ProfileCell.swift in Sources */,
+				270412412317AA2A0041702A /* UserInfo.swift in Sources */,
+				2704123D2317AA1B0041702A /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

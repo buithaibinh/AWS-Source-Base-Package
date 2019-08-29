@@ -31,25 +31,8 @@ class SignUpVC: BaseVC {
     @IBAction func signupBtnTapped(_ sender: Any) {
         if let username = self.usernameTxt.text, let password = self.passwordTxt.text {
             if username != "" && password != "" {
-                self.showIndicator()
-                AWSMobileClient.sharedInstance().signUp(username: username, password: password, userAttributes: [:], validationData: [:]) { (result, error) in
-                    DispatchQueue.main.async {
-                        self.hideIndicator()
-                        if let error = error as? AWSMobileClientError {
-                            let alert = UIAlertController(title: "Error",
-                                                          message: getErrorMsg(error)?.errorMsg,
-                                                          preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                            self.present(alert, animated: true, completion:nil)
-                        } else if let result = result {
-                            if (result.signUpConfirmationState != .confirmed) {
-                                self.performSegue(withIdentifier: "MOVE_TO_CONFIRM", sender: username)
-                            }
-                        }
-                    }
-                }
+                
             }
         }
-        
     }
 }
