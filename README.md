@@ -495,10 +495,8 @@ Keep output file `aws-exports.json` as reference in front-end app
 - Source code setup
 - Step by Step
 ## Mobile implementation<a name="sample4"></a>
-- Biz parts description
-- Source code setup
-- Step by Step
-
+- [Tutorial for iOS base project](Mobile/iOS/README.md)
+- [Tutorial for Android base project](Mobile/Android/README.md)
 Note:
 - Repo structure
   - Base

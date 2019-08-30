@@ -28,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
         startActivity(Intent(this, RegisterActivity::class.java))
     }
 
+    //Login with email,password
     fun onTapLoginEmail(v: View) {
         progressBar.visibility = View.VISIBLE
         if (edtEmail.text!!.isNotEmpty() && edtPassword.text!!.isNotEmpty()) {
@@ -80,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    //Login via facebook
     fun onTapLoginFacebook(v: View) {
         progressBar.visibility = View.VISIBLE
 
@@ -127,6 +129,7 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
+    // Login via Google
     fun onTapLoginGoogle(v: View) {
         progressBar.visibility = View.VISIBLE
 
@@ -175,6 +178,7 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
+    // call api register token with server custom
     fun registerToken(email: String?, id: String?) {
         val sharePref = getSharedPreferences(getString(R.string.token_devices), Context.MODE_PRIVATE) ?: return
         val token = sharePref.getString(getString(R.string.save_token), "") ?: return

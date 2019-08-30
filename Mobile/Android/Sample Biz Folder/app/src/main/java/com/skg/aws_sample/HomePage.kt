@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Handler
 import android.provider.MediaStore
 import android.view.KeyEvent
 import android.view.View
@@ -226,6 +225,7 @@ class HomePage : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    // Query get list user
     private fun getListUser() {
         App.instance.awsAppSyncClient.query(AllUsersQuery.builder().build())
             ?.responseFetcher(AppSyncResponseFetchers.CACHE_AND_NETWORK)
@@ -256,6 +256,7 @@ class HomePage : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    //Handle onclick
     override fun onClick(view: View) {
         when (view.id) {
             R.id.itemUserList -> {
@@ -314,16 +315,16 @@ class HomePage : AppCompatActivity(), View.OnClickListener {
         }
 
     }
-
+    // push event to analytics
     private fun logEvent() {
         val event = App.instance.pinpointManager.analyticsClient.createEvent("EventName")
-            .withAttribute("Report", "ByNamAnh")
-            .withMetric("Count", Math.random())
+            .withAttribute("Attribute1", "Value")
+            .withMetric("Metric", Math.random())
         App.instance.pinpointManager.analyticsClient.recordEvent(event)
         App.instance.pinpointManager.analyticsClient.submitEvents()
         btnReport.visibility = View.GONE
     }
-
+    // Mutation Delete User
     private fun deleteUser(userName: String) {
         val deleteUser = DeleteUserMutation.builder()
             .userName(userName)
@@ -343,6 +344,7 @@ class HomePage : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    //Subscription List user
     private fun subscriptionListUser() {
         val subscription = OnUpdateUserSubscription1.builder().build()
         subscriptionListUser = App.instance.awsAppSyncClient.subscribe(subscription)
@@ -445,7 +447,7 @@ class HomePage : AppCompatActivity(), View.OnClickListener {
         })
 
     }
-
+    //update attribute for user
     fun updateAttribute(pathImage: String) {
         AWSMobileClient.getInstance()
             .updateUserAttributes(mapOf("picture" to "https://skg-dev-s3bucket-mbz2y336iyll.s3-ap-southeast-2.amazonaws.com/$pathImage"),
@@ -469,7 +471,7 @@ class HomePage : AppCompatActivity(), View.OnClickListener {
                     }
                 })
     }
-
+    //choose photo from album
     private fun choosePhoto() {
         val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(i, RESULT_LOAD_IMAGE)
@@ -490,7 +492,7 @@ class HomePage : AppCompatActivity(), View.OnClickListener {
             progressBar.visibility = View.VISIBLE
         }
     }
-
+    // handle exit app
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             return if (buttonHardBackClick) {
