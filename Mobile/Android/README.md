@@ -387,4 +387,4 @@ final AnalyticsEvent event =
            .withProductId("DEMO_TRANSACTION_ID").build();
     pinpointManager.getAnalyticsClient().recordEvent(event);
 ```
-### [Complete Source Code](Sample\ Biz\ Folder)
+### [Complete Source Code](../Sample Biz Folder)
