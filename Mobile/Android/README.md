@@ -110,6 +110,7 @@ amplify init
 [logo]: ../images/step1.png 
 ![alt text][logo1]
 
+#### In step 2, choose android
 [logo1]: ../images/step2.png 
 ![alt text][logo2]
 
@@ -124,7 +125,7 @@ amplify init
 
 [logo5]: ../images/step6.png 
 
-### After Completion these steps, we did the following this code to create API.swift file:
+### After Completion these steps, we did the following this code:
 ```bash
 amplify add codegen --apiId APPSYNC_API_KEY
 ```
@@ -140,9 +141,9 @@ amplify add codegen --apiId APPSYNC_API_KEY
 ### Authentication Android
 
 #### In the build.gradle file, we did the following:
-- add import AWSMobileClient
+- import AWSMobileClient
 
-##### Login with Email & Password in signInBtnTapped function
+##### Login with Email & Password in function onTapLoginEmail function
 - We did the following this code to sign in.
 ```kotlin
  AWSMobileClient.getInstance()
@@ -151,7 +152,7 @@ amplify add codegen --apiId APPSYNC_API_KEY
                 }
 ```
 
-##### Login with Facebook in signInByFB
+##### Login with Facebook in function onTapLoginFacebook
 - We did the following this code to sign in / sign up by Facebook.
 ```kotlin
  val hostedUi = HostedUIOptions.builder()
@@ -175,7 +176,7 @@ AWSMobileClient.getInstance().showSignIn(this, signInUiOptions, object : Callbac
 
 ```
 
-##### Login with Facebook in signInByFB
+##### Login with Google in function onTapLoginGoogle
 - We did the following this code to sign in / sign up by Google.
 ```kotlin
 val hostedUiOptions = HostedUIOptions.builder()
