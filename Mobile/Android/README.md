@@ -25,12 +25,44 @@ $ npm install -g @aws-amplify/cli
 $ amplify configure
 ```
 
-##  Modify your project/build.gradle
+##  Modify your build.gradle and AndroidManifest.xml  
 [Full document](https://aws-amplify.github.io/docs/android/start)
 <br/>
 <br/>
+### In project/build.gradle :
+```bash
+classpath 'com.amazonaws:aws-android-sdk-appsync-gradle-plugin:2.8.+'
+```
+### In app/build.gradle
+```bash
+dependencies {
+    //Library Aws mobile client
+    implementation ('com.amazonaws:aws-android-sdk-mobile-client:2.15.+@aar') { transitive = true }
+    implementation 'com.amazonaws:aws-android-sdk-core:2.15.+'
+    //Library Aws authentication
+    implementation 'com.amazonaws:aws-android-sdk-auth-userpools:2.15.+'
+    implementation("com.amazonaws:aws-android-sdk-cognitoauth:2.15.+@aar") { transitive = true }
+    implementation 'com.amazonaws:aws-android-sdk-auth-ui:2.15.+'
+    //Library Aws Appsync
+    implementation 'com.amazonaws:aws-android-sdk-appsync:2.8.+'
+    //Library Aws S3
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.15.+'
+    //Library aws service (recomend 1.2.0 because if using version latest will be get error subscription unstable)
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+    //Library aws pinpoint
+    implementation 'com.amazonaws:aws-android-sdk-pinpoint:2.15.+'
 
-## Configuration
+    // import notification
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    implementation 'com.google.firebase:firebase-core:17.0.1'
+    implementation 'com.google.firebase:firebase-messaging:19.0.1'
+}
+apply plugin: 'com.amazonaws.appsync'
+```
+
+## Configuration (path: app/res/raw)
 File `awsconfiguration.json` will contain all keys, project identifier, ... about AWS services, so please make sure all information in this file have been correct before run project (replace all values start with `"YOUR_"`)
 ```json
 {
@@ -125,10 +157,13 @@ amplify init
 
 [logo5]: ../images/step6.png 
 
-### After Completion these steps, we did the following this code:
+### After Completion these steps, we did the following this code if you have AppSync Api Key:
 ```bash
 amplify add codegen --apiId APPSYNC_API_KEY
 ```
+### If you have created schema and file.graphql for your logic business, you can use codegen like below
+- Add file.graphql an schema in file graphql with path (project : app/src/main/graphql)
+And then, rebuild app. You will get directory api auto generate
 
 ## Android Implementation
 
