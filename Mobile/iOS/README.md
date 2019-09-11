@@ -16,7 +16,9 @@
 
 ## Install Amplify CLI
 [Full document](https://github.com/aws-amplify/amplify-cli)
- - Requires Node.js® version 8.11.x or later
+
+System Requirement.
+In order to install amplify, requires Node.js® version 8.11.x or later
 
 Install and configure the Amplify CLI as follows:
 
@@ -26,10 +28,9 @@ $ amplify configure
 ```
 
 ## Install Cocoapod
-[Full document](https://guides.cocoapods.org/using/getting-started.html)
-<br/>
-<br/>
-Install by Ruby gem command
+
+
+Install Cocoapod by Ruby gem command
 ```bash
 $ sudo gem install cocoapods
 ```
@@ -39,8 +40,22 @@ export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 ```
 
+For more detail, Reference https://guides.cocoapods.org/using/getting-started.html
+
+## Download Starter source code
+Before starting, you should download [Starter Source Code](iOS/Starter) and do steps below. This is empty project which we added neccessary package for work with AWS.
+
+After download, open this project by X-Code and do below steps
+
 ## Configuration
-File `awsconfiguration.json` will contain all keys, project identifier, ... about AWS services, so please make sure all information in this file have been correct before run project (replace all values start with `"YOUR_"`)
+After creating AWS infrastructure by backend source (Base/Starter), you download files `awsconfiguration.json`, `schema.graphql`, `schema.json` from AWS Appsync
+
+File `awsconfiguration.json` will contain all keys, project identifier, ... about AWS services
+
+File `schema.graphql, schema.json` contain information of graphql APIs.
+
+### Modify awsconfiguration.json
+You need to replace all values start with prefix `"YOUR_"` in `DemoAWS/Common/awsconfiguration.json` of Starter source code. Or you can replace this file by the one which you downloaded from AWS Appsync
 ```json
 {
     "UserAgent": "aws-amplify-cli/0.1.0",
@@ -110,6 +125,7 @@ File `awsconfiguration.json` will contain all keys, project identifier, ... abou
 }
 ```
 ## AppSync Configuration
+Open terminal in current project root folder and run init
 ```bash
 amplify init
 ```
@@ -119,10 +135,10 @@ amplify init
 [logo]: ../images/step1.png 
 ![alt text][logo1]
 
-[logo1]: ../images/step2.png 
+[logo1]: ../images/step3.png 
 ![alt text][logo2]
 
-[logo2]: ../images/step3.png 
+[logo2]: ../images/step2.png 
 ![alt text][logo3]
 
 [logo3]: ../images/step4.png 
@@ -133,88 +149,83 @@ amplify init
 
 [logo5]: ../images/step6.png 
 
-### After Completion these steps, we did the following this code to create API.swift file:
+### Generate schema to code
+In order to work with Graphql APIs, after download 2 file `schema.json` and `schema.graphql`, you put it in path `DemoAWS/`. After that, open terminal and run below code.
+
 ```bash
 amplify add codegen --apiId APPSYNC_API_KEY
 ```
 
-## iOS Implementation
+ This statement will generate file with name API.swift. All your GraphQl API will be defined by classes in this file. After that, you can call these API easily via these classes. example class `AllUsersQuery` [AppSync usage below](#query)
 
-## Table of contents:
-* [Authentication in iOS](#Authentication-iOS)
-* [Realtime System in iOS](#Realtime-System-iOS)
-* [Storage in iOS](#Storage-iOS)
-* [Analytics in iOS](#Analytics-iOS)
+# iOS Implementation
+Note: In order to use function in AWS sdk, you have to import AWSMobileClient to any where you use it.
 
-### Authentication iOS
+## Authentication
 
-#### In the SignInVC.swift file, we did the following:
-- add import AWSMobileClient
+### 1) Sign up with email and password by Cognito User Pool 
+```swift
+AWSMobileClient.sharedInstance().signUp(username: username, password: password, userAttributes: [:], validationData: [:])
+```
 
-##### Login with Email & Password in signInBtnTapped function
-- We did the following this code to sign in.
+### 2) Login with Email & Password via Cognito User Pool
 ```swift
 AWSMobileClient.sharedInstance().signIn(username: username, password: password) 
 ```
 
-##### Login with Facebook in signInByFB
-- We did the following this code to sign in / sign up by Facebook.
+After this code executed successfully, there is verification code send to registered mail.
+After get this code, you need to verify it by below statement.
+
+```swift
+AWSMobileClient.sharedInstance().confirmSignUp(username: username, confirmationCode: confirmCode)
+```
+After that, you can login normally with registered email and password.
+
+### 3) Resend verification Code
+In case verification code is expired, you need AWS to resend it. 
+Execute below code:
+
+```swift
+AWSMobileClient.sharedInstance().resendSignUpCode(username: username)
+```
+
+::: info
+After login success, all credentials of user will be stored in `AWSMobileClient.sharedInstance().getCredentialsProvider()` to use for other service require authentication
+:::
+
+### 4) Login with social network
+
+#### a) Login with Facebook by hosted ui
+
 ```swift
 let hostedUIOptions = HostedUIOptions(scopes: ["phone", "email", "openid", "profile", "aws.cognito.signin.user.admin"], identityProvider: "Facebook")
 // Present the Hosted UI sign in.
 AWSMobileClient.sharedInstance().showSignIn(navigationController: self.navigationController!, hostedUIOptions: hostedUIOptions)
 ```
 
-##### Login with Facebook in signInByFB
-- We did the following this code to sign in / sign up by Google.
+#### b) Login with Google by hosted ui
+
 ```swift
 let hostedUIOptions = HostedUIOptions(scopes: ["phone", "email", "openid", "profile", "aws.cognito.signin.user.admin"], identityProvider: "Google")
 // Present the Hosted UI sign in.
 AWSMobileClient.sharedInstance().showSignIn(navigationController: self.navigationController!, hostedUIOptions: hostedUIOptions)
 ```
 
-#### In the SignUpVC.swift file, we did the following:
-- add import AWSMobileClient
+## Listen User State
+AWS provide function allow user to track user state realtime. Anytime user change state (sign in, sign out...) this method will be excecuted
 
-##### Sign Up with Email & Password in signupBtnTapped function:
-- We did the following this code to sign up.
-```swift
-AWSMobileClient.sharedInstance().signUp(username: username, password: password, userAttributes: [:], validationData: [:])
-```
-
-#### In the ConfirmVC.swift file, we did the following:
-- add import AWSMobileClient
-
-##### Confirmation with code in confirmBtnTapped function:
-- We did the following this code to confirm.
-```swift
-AWSMobileClient.sharedInstance().confirmSignUp(username: username, confirmationCode: confirmCode)
-```
-
-##### Resend Confirmation Code in resendBtnTapped function:
-- We did the following this code to resend confirmation code.
-```swift
-AWSMobileClient.sharedInstance().resendSignUpCode(username: username)
-```
-
-#### Listen User State
-- First Time
+Firstly, you need to initialize in HomeVC.swift
 ```swift
 AWSMobileClient.sharedInstance().initialize { (userState, error)
 ```
-- Listen User State In case of Using Application
+After that, register listener to listen User State In case of Using Application
 ```swift
 AWSMobileClient.sharedInstance().addUserStateListener(self) { (userState, info)
 ```
 
-### Realtime System iOS
-#### In the HomeVC.swift file, we did the following:
-- Add import AWSAppSync
-
-#### Config
-- Add var appSyncClient: AWSAppSyncClient? = nil
-- In fetchUsers() function.
-- We did the following this code to init appSyncClient
+## Work with Appsync GraphQL
+### Config
+In order to call GraphQl API from Appsync, first, we need to intialize AppSync config.
 ```swift
 do {
   let cacheConfiguration = try AWSAppSyncCacheConfiguration()
@@ -231,33 +242,36 @@ do {
 }
 ```
 
+This statement will read setting from awsconfiguration.json file and initialize appSyncClientObject. 
+
+After run codegen statement, API get all users can be called easily by below code
+
 #### Query
-- We did the following this code to Query Users List.
 ```swift
 appSyncClient?.fetch(query: AllUsersQuery.init(), cachePolicy: .fetchIgnoringCacheData, queue: DispatchQueue.main, resultHandler: { (task, error))
 ```
 
 #### Mutation
-- In deleteIfAdmin function, We did the following this code to delete User.
 ```swift
 appSyncClient?.perform(mutation: DeleteUserMutation(userName: username), queue: DispatchQueue.main, optimisticUpdate: nil, conflictResolutionBlock: nil, resultHandler: { (result, error)
 ```
 
 #### Subscription
-- Add var discard: Cancellable?
-- In deleteIfAdmin function, we did the following this code to subscribe.
+
 ```swift
 discard = try self.appSyncClient?.subscribe(subscription: OnUpdateUserSubscription.init(), resultHandler: { (result, transitions, error)
 ```
+When any user is deleted, resultHandler callback will be executed.
 
-### Storage iOS
-#### In the HomeVC.swift file, we did the following:
-- Add import AWSS3
+## Work with AWS S3
+- In order to work with AWS, you need to import AWSS3
 
 - Setup For Upload: In setupAWSUploadConfiguration function, we did the following code.
 ```swift
+// Credential configuration
 let serviceConfiguration = AWSServiceConfiguration(region: .APSoutheast2, 
 credentialsProvider: AWSMobileClient.sharedInstance().getCredentialsProvider())
+// iOS S3 transfer tasks will be managed through an Utility, we need to initiate it first
 let transferUtilityConfigurationWithRetry = AWSS3TransferUtilityConfiguration()
 transferUtilityConfigurationWithRetry.isAccelerateModeEnabled = false
 transferUtilityConfigurationWithRetry.retryLimit = 10
@@ -267,6 +281,7 @@ transferUtilityConfigurationWithRetry.timeoutIntervalForResource = 15*60 //15 mi
 if AWSS3TransferUtility.s3TransferUtility(forKey: "with-retry") != nil {
     return
 }
+// We register it to Storage object (AWSS3TransferUtility) to use every where in our app access by key-value, key here is `with-retry`
 AWSS3TransferUtility.register(
     with: serviceConfiguration!,
     transferUtilityConfiguration: transferUtilityConfigurationWithRetry,
@@ -274,7 +289,7 @@ AWSS3TransferUtility.register(
 )
 ```
 
-- In upload function, The following example shows how to upload a file to an Amazon S3 bucket.
+- Upload a file to an Amazon S3 bucket.
 ```swift
 func uploadData(data: Data) {
 
@@ -284,6 +299,11 @@ func uploadData(data: Data) {
           // Do something e.g. Update a progress bar.
        })
   }
+  // Set public read access to read from link
+  expression.setValue("public-read", forRequestHeader: "x-amz-acl")
+  // After upload success, url will be in format
+  // (https://$YOUR_BUCKET.s3-$YOUR_REGION.amazonaws.com/$YourFileName.ext)
+  // Ex: https://skg-dev-s3bucket-ssids.s3-ap-southeast-2.amazonaws.com/skgavatar.jpg
 
   var completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock?
   completionHandler = { (task, error) -> Void in
@@ -293,11 +313,12 @@ func uploadData(data: Data) {
      })
   }
 
-  let transferUtility = AWSS3TransferUtility.default()
+  // Get object from same key `with-retry` from Storage object above
+  let transferUtility = AWSS3TransferUtility.s3TransferUtility(forKey: "with-retry")
 
   transferUtility.uploadData(data,
        bucket: "YourBucket",
-       key: "YourFileName",
+       key: "YourFileName.ext", // If want push file in sub folder, use "YourFolder/YourFileName.ext" instead
        contentType: "text/plain",
        expression: expression,
        completionHandler: completionHandler).continueWith {
@@ -313,12 +334,12 @@ func uploadData(data: Data) {
       }
 }
 ```
-### Analytics iOS
-- Add import AWSPinpoint
-- Add var pinpoint: AWSPinpoint?
+## Work with Analytics
 
 #### Configuration
-- The following example shows how to init AWSPinPoint
+- Add import AWSPinpoint
+- Init AWSPinPoint, it read config information from `awsconfiguration.json`
+
 ```swift
 func initPinPoint() {
     let pinpointConfiguration = AWSPinpointConfiguration.defaultPinpointConfiguration(launchOptions: nil)
@@ -327,16 +348,8 @@ func initPinPoint() {
 ```
 
 #### Submit Event
-- Send Event, we did the following this code:
-```swift
-let event = analyticsClient.createEvent(withEventType: eventName)
-event.addAttribute(attributeValue, forKey: attributeName)
-event.addMetric(NSNumber(value: metricValue), forKey: metricName)
-analyticsClient.record(event)
-analyticsClient.submitEvents()
-```
-
 - Send Event with attribute, Metric, we did the following this code:
+
 ```swift
 let event = analyticsClient.createEvent(withEventType: eventName)
 for (key, value) in attributeDict {
@@ -349,7 +362,7 @@ analyticsClient.record(event)
 analyticsClient.submitEvents()
 ```
 
-- Send Monetization Event, we did the following this code:
+- Send Monetization Event
 ```swift
 let event = analyticsClient.createVirtualMonetizationEvent(
             withProductId: productId,
@@ -360,4 +373,4 @@ let event = analyticsClient.createVirtualMonetizationEvent(
 analyticsClient.record(event)
 analyticsClient.submitEvents()
 ```
-### [Complete Source Code](iOS/Sample\ Biz)
+### [Complete Source Code](iOS/Sample%20Biz)
