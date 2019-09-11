@@ -3,7 +3,6 @@
 ## Table of contents:
 * [Services used in this project](#aws-services)
 * [Install the CLI](#install-amplify-cli)
-* [Install cocoapod](#install-cocoapod) - Android packages manager tool
 * [Configuration](#configuration)
 * [AppSync Configuration](#AppSync-Configuration)
 * [Android Implementation](#Android-Implementation)
@@ -15,8 +14,9 @@
 - AWS S3
 
 ## Install Amplify CLI
-[Full document](https://github.com/aws-amplify/amplify-cli)
- - Requires Node.js® version 8.11.x or later
+
+System Requirement.
+In order to install amplify, requires Node.js® version 8.11.x or later
 
 Install and configure the Amplify CLI as follows:
 
@@ -25,45 +25,22 @@ $ npm install -g @aws-amplify/cli
 $ amplify configure
 ```
 
-##  Modify your build.gradle and AndroidManifest.xml  
-[Full document](https://aws-amplify.github.io/docs/android/start)
-<br/>
-<br/>
-### In project/build.gradle :
-```bash
-classpath 'com.amazonaws:aws-android-sdk-appsync-gradle-plugin:2.8.+'
-```
-### In app/build.gradle
-```bash
-dependencies {
-    //Library Aws mobile client
-    implementation ('com.amazonaws:aws-android-sdk-mobile-client:2.15.+@aar') { transitive = true }
-    implementation 'com.amazonaws:aws-android-sdk-core:2.15.+'
-    //Library Aws authentication
-    implementation 'com.amazonaws:aws-android-sdk-auth-userpools:2.15.+'
-    implementation("com.amazonaws:aws-android-sdk-cognitoauth:2.15.+@aar") { transitive = true }
-    implementation 'com.amazonaws:aws-android-sdk-auth-ui:2.15.+'
-    //Library Aws Appsync
-    implementation 'com.amazonaws:aws-android-sdk-appsync:2.8.+'
-    //Library Aws S3
-    implementation 'com.amazonaws:aws-android-sdk-s3:2.15.+'
-    //Library aws service (recomend 1.2.0 because if using version latest will be get error subscription unstable)
-    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
-    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
-    //Library aws pinpoint
-    implementation 'com.amazonaws:aws-android-sdk-pinpoint:2.15.+'
+Reference https://github.com/aws-amplify/amplify-cli
 
-    // import notification
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+## Download Starter source code
+Before starting, you should download [Starter Source Code](Android/Starter) and do steps below. This is empty project which we added neccessary package for work with AWS.
 
-    implementation 'com.google.firebase:firebase-core:17.0.1'
-    implementation 'com.google.firebase:firebase-messaging:19.0.1'
-}
-apply plugin: 'com.amazonaws.appsync'
-```
+After download, open this project by Android Studio and do below steps
 
-## Configuration (path: app/res/raw)
-File `awsconfiguration.json` will contain all keys, project identifier, ... about AWS services, so please make sure all information in this file have been correct before run project (replace all values start with `"YOUR_"`)
+## Configuration
+After creating AWS infrastructure by backend source (Base/Starter), you download files `awsconfiguration.json`, `schema.graphql`, `schema.json` from AWS Appsync
+
+File `awsconfiguration.json` will contain all keys, project identifier, ... about AWS services
+
+File `schema.graphql, schema.json` contain information of graphql APIs.
+
+### Modify awsconfiguration.json
+You need to replace all values start with prefix `"YOUR_"` in `app/res/raw` of Starter source code. Or you can replace this file by the one which you downloaded from AWS Appsync
 ```json
 {
     "UserAgent": "aws-amplify-cli/0.1.0",
@@ -133,6 +110,7 @@ File `awsconfiguration.json` will contain all keys, project identifier, ... abou
 }
 ```
 ## AppSync Configuration
+Open terminal in current project root folder and run init
 ```bash
 amplify init
 ```
@@ -142,7 +120,6 @@ amplify init
 [logo]: ../images/step1.png 
 ![alt text][logo1]
 
-#### In step 2, choose android
 [logo1]: ../images/step2.png 
 ![alt text][logo2]
 
@@ -157,29 +134,50 @@ amplify init
 
 [logo5]: ../images/step6.png 
 
-### After Completion these steps, we did the following this code if you have AppSync Api Key:
-```bash
-amplify add codegen --apiId APPSYNC_API_KEY
+### Generate schema to code
+In order to work with Graphql APIs, after download 2 file `schema.json` and `schema.graphql` from AppSync, you put it in path `app/src/main/graphql`. After that, rebuild project. All your GraphQl APIs will be generate into classes under auto generated folder in project. After that, you can call these API easily via these classes.
+
+# Android Implementation
+Note: In order to use function in AWS sdk, you have to import AWSMobileClient to any where you use it.
+
+## Authentication
+
+### 1) Sign up with email and password by Cognito User Pool 
+```kotlin
+AWSMobileClient.getInstance().signUp(
+                    "email",
+                    "password",
+                    attribute,
+                    null,
+                    object : Callback<SignUpResult> {
+                        //code handle
+                    })
 ```
-### If you have created schema and file.graphql for your logic business, you can use codegen like below
-- Add file.graphql an schema in file graphql with path (project : app/src/main/graphql)
-And then, rebuild app. You will get directory api auto generate
 
-## Android Implementation
+After this code executed successfully, there is verification code send to registered mail.
+After get this code, you need to verify it by below statement.
 
-## Table of contents:
-* [Authentication in Android](#Authentication-Android)
-* [Realtime System in Android](#Realtime-System-Android)
-* [Storage in Android](#Storage-Android)
-* [Analytics in Android](#Analytics-Android)
+```kotlin
+AWSMobileClient.getInstance().confirmSignUp(
+                "email",
+                "confirm_code",
+                object : Callback<SignUpResult> {
+                    // code handle
+                })
+```
+After that, you can login normally with registered email and password.
 
-### Authentication Android
+### 2) Resend verification Code
+In case verification code is expired, you need AWS to resend it. 
+Execute below code:
 
-#### In the build.gradle file, we did the following:
-- import AWSMobileClient
+```kotlin
+ AWSMobileClient.getInstance().resendSignUp("user_name/email", object : Callback<SignUpResult> {
+        // code handle
+ })
+```
 
-##### Login with Email & Password in function onTapLoginEmail function
-- We did the following this code to sign in.
+### 3) Login with Email & Password via Cognito User Pool
 ```kotlin
  AWSMobileClient.getInstance()
                 .signIn("email", "password", null, object : Callback<SignInResult> {
@@ -187,8 +185,12 @@ And then, rebuild app. You will get directory api auto generate
                 }
 ```
 
-##### Login with Facebook in function onTapLoginFacebook
-- We did the following this code to sign in / sign up by Facebook.
+
+
+### 4) Login with social network
+
+#### a) Login with Facebook by hosted ui
+
 ```kotlin
  val hostedUi = HostedUIOptions.builder()
             .scopes(
@@ -208,11 +210,10 @@ And then, rebuild app. You will get directory api auto generate
 AWSMobileClient.getInstance().showSignIn(this, signInUiOptions, object : Callback<UserStateDetails> {
     // code handle
 }
-
 ```
 
-##### Login with Google in function onTapLoginGoogle
-- We did the following this code to sign in / sign up by Google.
+#### b) Login with Google by hosted ui
+
 ```kotlin
 val hostedUiOptions = HostedUIOptions.builder()
             .scopes(
@@ -235,57 +236,24 @@ AWSMobileClient.getInstance().showSignIn(this, signInUiOptions, object : Callbac
 }
 ```
 
-#### In the RegisterActivity.class file, we did the following:
+## Listen User State
+AWS provide function allow user to track user state realtime. Anytime user change state (sign in, sign out...) this method will be excecuted
 
-##### Sign Up with Email & Password in onTapRegisterAccount function:
-- We did the following this code to sign up.
-```kotlin
-AWSMobileClient.getInstance().signUp(
-                    "email",
-                    "password",
-                    attribute,
-                    null,
-                    object : Callback<SignUpResult> {
-                        //code handle
-                    })
-```
-
-##### Confirmation with code in onTapConfirmCode function:
-- We did the following this code to confirm.
-```kotlin
-AWSMobileClient.getInstance().confirmSignUp(
-                "email",
-                "confirm_code",
-                object : Callback<SignUpResult> {
-                    // code handle
-                })
-```
-
-##### Resend Confirmation Code in onTapResendConfirmCode function:
-- We did the following this code to resend confirmation code.
-```kotlin
- AWSMobileClient.getInstance().resendSignUp("user_name/email", object : Callback<SignUpResult> {
-        // code handle
- })
-```
-
-#### Listen User State
-- First Time
+Firstly, you need to initialize in App.kt
 ```kotlin
 AWSMobileClient.getInstance()
                 .initialize(applicationContext, awsConfig, object : Callback<UserStateDetails> {
                     // code handle
                 })
 ```
-- Listen User State In case of Using Application
+After that, register listener to listen User State In case of Using Application
 ```kotlin
 AWSMobileClient.getInstance().addUserStateListener(applicationContext, object : Callback<UserStateDetails> {})
 ```
 
-### Realtime System Android
-#### In the App.class file, we did the following:
-- Add lateinit var awsAppSyncClient : AWSAppSyncClient
-- We did the following this code to init appSyncClient
+## Work with Appsync GraphQL
+### Config
+In order to call GraphQl API from Appsync, first, we need to intialize AppSync config.
 ```kotlin
  awsAppSyncClient = AWSAppSyncClient.builder()
             .context(applicationContext)
@@ -300,9 +268,12 @@ AWSMobileClient.getInstance().addUserStateListener(applicationContext, object : 
             }
             .build()
 ```
-#### In the HomeActivity.class file:
-##### Query
-- We did the following this code to Query Users List.
+
+This statement will read setting from `awsconfiguration.json` file and initialize appSyncClient Object. 
+
+After that, we can call GraphQL API via auto generated class like below
+
+#### Query
 ```kotlin
 App.instance.awsAppSyncClient.query(AllUsersQuery.builder().build())
             ?.responseFetcher(AppSyncResponseFetchers.CACHE_AND_NETWORK)
@@ -311,8 +282,7 @@ App.instance.awsAppSyncClient.query(AllUsersQuery.builder().build())
             })
 ```
 
-##### Mutation
-- In deleteIfAdmin function, We did the following this code to delete User.
+#### Mutation
 ```kotlin
 private fun deleteUser(userName: String) {
         val deleteUser = DeleteUserMutation.builder()
@@ -324,22 +294,24 @@ private fun deleteUser(userName: String) {
     }
 ```
 
-##### Subscription
-- Add var discard: Cancellable?
-- In deleteIfAdmin function, we did the following this code to subscribe.
+#### Subscription
+
 ```kotlin 
  private fun subscriptionListUser() {
         val subscription = OnUpdateUserSubscription1.builder().build()
         subscriptionListUser = App.instance.awsAppSyncClient.subscribe(subscription)
-        subscriptionListUser?.execute(object : AppSyncSubscriptionCall.Callback<OnUpdateUserSubscription1.Data> {})
+        subscriptionListUser?.execute(object : AppSyncSubscriptionCall.Callback<OnUpdateUserSubscription1.Data> {
+            //code handle
+        })
     }
 ```
+When any user is deleted, resultHandler callback will be executed.
 
-#### Storage Android
+## Work with AWS S3
+- Initialize TransferUtility object by the config for S3 in `awsconfiguration.json`
 
-- Upload: In uploadAvatar function, we did the following code.
 ```kotlin
- val transferUtility = TransferUtility.builder()
+val transferUtility = TransferUtility.builder()
             .context(applicationContext)
             .awsConfiguration(AWSMobileClient.getInstance().configuration)
             .s3Client(
@@ -350,8 +322,11 @@ private fun deleteUser(userName: String) {
             )
             .defaultBucket("skg-dev-s3bucket-mbz2y336iyll")
             .build()
+```
 
- val pathImage = "protected/${AWSMobileClient.getInstance().identityId}/filename"
+- Upload a file to an Amazon S3 bucket.
+```kotlin
+val pathImage = "protected/${AWSMobileClient.getInstance().identityId}/filename"
 
         val uploadObserver =
             transferUtility.upload(
@@ -377,12 +352,11 @@ private fun deleteUser(userName: String) {
             }
         })
 ```
-### Analytics Android
+## Work with Analytics
+
 #### Configuration
-- In the file App.class we did init AWSPinPoint
-```kotlin 
-  lateinit var pinpointManager: PinpointManager
-```
+- Init AWSPinPoint with below code, it read config information from `awsconfiguration.json`
+
 ```kotlin
 val pinpointConfig = PinpointConfiguration(
                 applicationContext,
@@ -393,7 +367,10 @@ val pinpointConfig = PinpointConfiguration(
 ```
 
 #### Submit Event
-- Send Event with attribute, Metric,in the file HomeActivity.class, we did the following this code:
+In order to understand kind of events which AWS support, you should refer to https://aws-amplify.github.io/docs/android/analytics for more detail. We only describe events which we used in demo.
+
+- Send Event with attribute, Metric, we did the following this code:
+
 ```kotlin
 private fun logEvent() {
         val event = App.instance.pinpointManager.analyticsClient.createEvent("EventName")
@@ -403,24 +380,18 @@ private fun logEvent() {
         App.instance.pinpointManager.analyticsClient.submitEvents()
     }
 ```
+You can add more attribute,meric by append more .withAttribute and .withMetric
 
-- Send Event, we did the following this code:
-```kotlin
-    SessionClient sessionClient = pinpointManager.getSessionClient();
-    sessionClient.startSession();
-    sessionClient.stopSession();
-    pinpointManager.getAnalyticsClient().submitEvents();
-```
-
-- Send Monetization Event, we did the following this code:
+- Send Monetization Event
 ```kotlin
 final AnalyticsEvent event =
-       AmazonMonetizationEventBuilder.create(pinpointManager.getAnalyticsClient())
+       AmazonMonetizationEventBuilder.create(App.instance.pinpointManager.analyticsClient)
            .withCurrency("USD")
            .withItemPrice(10.00)
            .withProductId("DEMO_PRODUCT_ID")
            .withQuantity(1.0)
-           .withProductId("DEMO_TRANSACTION_ID").build();
-    pinpointManager.getAnalyticsClient().recordEvent(event);
+           .withProductId("DEMO_TRANSACTION_ID").build()
+     App.instance.pinpointManager.analyticsClient.recordEvent(event)
+     App.instance.pinpointManager.analyticsClient.submitEvents()
 ```
-### [Complete Source Code](SampleBizFolder)
+### [Complete Source Code](Android/SampleBizFolder)
