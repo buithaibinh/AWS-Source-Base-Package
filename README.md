@@ -497,7 +497,7 @@ Keep output file `aws-exports.json` as reference in front-end app
   
   With admin user, he can delete other users.
 
-![alt text](https://raw.githubusercontent.com/buithaibinh/AWS-Source-Base-Package/master/docs/login.png|width=200px) ![alt text](https://raw.githubusercontent.com/buithaibinh/AWS-Source-Base-Package/master/docs/admin_account.png|width=200px)![alt text](https://raw.githubusercontent.com/buithaibinh/AWS-Source-Base-Package/master/docs/Notification.png|width=200px)
+![alt text](https://raw.githubusercontent.com/lbkhanh/AWS-Source-Base-Package/master/docs/login.png|width=200px) ![alt text](https://raw.githubusercontent.com/lbkhanh/AWS-Source-Base-Package/master/docs/admin_account.png|width=200px)![alt text](https://raw.githubusercontent.com/lbkhanh/AWS-Source-Base-Package/master/docs/Notification.png|width=200px)
 
 Functions:
 - Authentication
