@@ -28,7 +28,7 @@ $ amplify configure
 Reference https://github.com/aws-amplify/amplify-cli
 
 ## Download Starter source code
-Before starting, you should download [Starter Source Code](/Starter) and do steps below. This is empty project which we added neccessary package for work with AWS.
+Before starting, you should download [Starter Source Code](./Starter) and do steps below. This is empty project which we added neccessary package for work with AWS.
 
 After download, open this project by Android Studio and do below steps
 
@@ -394,4 +394,4 @@ final AnalyticsEvent event =
      App.instance.pinpointManager.analyticsClient.recordEvent(event)
      App.instance.pinpointManager.analyticsClient.submitEvents()
 ```
-### [Complete Source Code](/SampleBizFolder)
+### [Complete Source Code](./SampleBizFolder)
