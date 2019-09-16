@@ -1,11 +1,11 @@
-# Tutorial for iOS base project
+# Tutorial for VueJS base project
 
 ## Table of contents:
 * [Services used in this project](#aws-services)
 * [Install the package](#install-the-pagekage)
 * [Configuration](#configuration)
 * [AppSync Configuration](#AppSync-Configuration)
-* [VueJS Implementation](#vuejs-Implementation)
+* [VueJS Implementation](#VueJS-Implementation)
 
 ## AWS Services
 - AWS Cognito
@@ -149,7 +149,7 @@ After login success, all credentials of user will be stored in `Auth.currentAuth
 
 ### 4) Login with social network
 
-#### a) Login with Facebook by hosted ui
+#### a) Login with Facebook
 
 ```js
 import Auth from '@aws-amplify/auth'
@@ -157,7 +157,7 @@ const provider = 'Facebook'
 Auth.federatedSignIn({ provider: provider })
 ```
 
-#### b) Login with Google by hosted ui
+#### b) Login with Google
 
 ```js
 import Auth from '@aws-amplify/auth'
