@@ -512,7 +512,7 @@ Functions:
   - Report (Send simple analytic event)
 
 ## Frontend implementation<a name="sample3"></a>
-### [Tutorial for Frontend](Frontend/Vuejs)
+### [Tutorial for Frontend](Frontend/VueJS)
 ## Mobile implementation<a name="sample4"></a>
 ### [Tutorial for Android](Mobile/Android)
 ### [Tutorial for iOS](Mobile/iOS)
