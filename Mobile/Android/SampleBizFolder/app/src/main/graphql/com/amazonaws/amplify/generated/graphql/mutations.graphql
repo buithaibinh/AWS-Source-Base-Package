@@ -1,0 +1,43 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateUser($input: CreateUserInput!) {
+  createUser(input: $input) {
+    Username
+    Attributes {
+      Name
+      Value
+    }
+    UserCreateDate
+    UserLastModifiedDate
+    Enabled
+    UserStatus
+    groups {
+      GroupName
+      UserPoolId
+      Description
+      Precedence
+      CreationDate
+      LastModifiedDate
+    }
+  }
+}
+mutation DeleteUser($userName: String!) {
+  deleteUser(userName: $userName) {
+    Username
+    Attributes {
+      Name
+      Value
+    }
+    UserCreateDate
+    UserLastModifiedDate
+    Enabled
+    UserStatus
+    groups {
+      GroupName
+      UserPoolId
+      Description
+      Precedence
+      CreationDate
+      LastModifiedDate
+    }
+  }
+}

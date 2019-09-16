@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <androidx.appcompat.widget.AppCompatTextView android:id="@+id/tvTitle"
+                                                 android:layout_width="wrap_content"
+                                                 android:layout_height="wrap_content"
+                                                 android:text="@string/notification"
+                                                 android:textSize="20sp"
+                                                 android:textStyle="bold" android:layout_alignParentEnd="true"
+                                                 android:layout_marginTop="17dp"
+                                                 android:layout_alignParentTop="true"
+                                                 android:layout_alignParentStart="true"
+                                                 android:gravity="center"/>
+    <androidx.appcompat.widget.AppCompatTextView android:id="@+id/tvMessage"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                 android:layout_marginTop="40dp"
+                                                 android:layout_marginStart="40dp"
+                                                 android:layout_marginEnd="40dp"
+                                                 android:layout_below="@+id/tvTitle"
+                                                 android:layout_alignParentStart="true"
+                                                 android:layout_alignParentEnd="true"/>
+    <Button android:id="@+id/btnOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="39dp"
+            android:layout_below="@+id/tvMessage"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="100dp"
+            android:layout_marginStart="100dp"
+            android:text="@string/ok"
+            android:onClick="onTapOk"
+            android:textSize="20sp"/>
+</RelativeLayout>

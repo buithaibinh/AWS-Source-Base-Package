@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "638237267329",
+    "firebase_url": "https://skg-base.firebaseio.com",
+    "project_id": "skg-base",
+    "storage_bucket": "skg-base.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638237267329:android:44491883026da430",
+        "android_client_info": {
+          "package_name": "com.skg.aws_sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638237267329-hmqm8m3lil1mslsvjfokcvggsn5b489q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCufeR0WoCors7lsJEAFSesG4u0yVA1Eo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638237267329-hmqm8m3lil1mslsvjfokcvggsn5b489q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

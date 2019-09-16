@@ -1,0 +1,38 @@
+# this is an auto generated file. This will be overwritten
+query AllGroups($limit: Int, $nextToken: String) {
+  allGroups(limit: $limit, nextToken: $nextToken) {
+    items {
+      GroupName
+      UserPoolId
+      Description
+      Precedence
+      CreationDate
+      LastModifiedDate
+    }
+    nextToken
+  }
+}
+query AllUsers($limit: Int, $nextToken: String, $filter: FilterInput) {
+  allUsers(limit: $limit, nextToken: $nextToken, filter: $filter) {
+    items {
+      Username
+      Attributes {
+        Name
+        Value
+      }
+      UserCreateDate
+      UserLastModifiedDate
+      Enabled
+      UserStatus
+      groups {
+        GroupName
+        UserPoolId
+        Description
+        Precedence
+        CreationDate
+        LastModifiedDate
+      }
+    }
+    nextToken
+  }
+}
