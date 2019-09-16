@@ -489,13 +489,33 @@ yarn deploy
 
 Keep output file `aws-exports.json` as reference in front-end app
 
+### Sample App Description
+#### Biz parts description
+  This applicaion is simple "Say hello" app.
+
+  After user login, choose another user and "Say hello", 1 notifcation will be sent to that user. 
+  
+  With admin user, he can delete other users.
+
+<img src="./docs/login.png" width="25%" height="25%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./docs/admin_account.png" width="25%" height="25%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./docs/Notification.png" width="30%" height="30%">
+
+Functions:
+- Authentication
+  - Signup
+  - Login
+  - Logout
+  - Social login 
+- User list
+  - Say hello to specified user
+  - Say hello to all user
+  - Delete user (only Admin)
+  - Report (Send simple analytic event)
 
 ## Frontend implementation<a name="sample3"></a>
-- Biz parts description
-- Source code setup
-- Step by Step
+### [Tutorial for Frontend](Frontend/Vuejs)
 ## Mobile implementation<a name="sample4"></a>
-- [Tutorial for iOS base project](Mobile/iOS/README.md)
+### [Tutorial for Android](Mobile/Android)
+### [Tutorial for iOS](Mobile/iOS)
 
 Note:
 - Repo structure
