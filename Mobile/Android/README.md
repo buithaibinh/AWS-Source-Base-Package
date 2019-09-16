@@ -117,22 +117,25 @@ amplify init
 ### We did the following:
 ![alt text][logo]
 
-[logo]: ../images/step1.png 
+[logo]: ./Image/step1.png 
 ![alt text][logo1]
 
-[logo1]: ../images/step2.png 
+[logo1]: ./Image/step2.png 
 ![alt text][logo2]
 
-[logo2]: ../images/step3.png 
+[logo2]: ./Image/step3.png 
 ![alt text][logo3]
 
-[logo3]: ../images/step4.png 
+[logo3]: ./Image/step4.png 
 ![alt text][logo4]
 
-[logo4]: ../images/step5.png 
+[logo4]: ./Image/step5.png 
 ![alt text][logo5]
 
-[logo5]: ../images/step6.png 
+[logo5]: ./Image/step6.png 
+![alt text][logo6]
+
+[logo6]: ./Image/step7.png 
 
 ### Generate schema to code
 In order to work with Graphql APIs, after download 2 file `schema.json` and `schema.graphql` from AppSync, you put it in path `app/src/main/graphql`. After that, rebuild project. All your GraphQl APIs will be generate into classes under auto generated folder in project. After that, you can call these API easily via these classes.
