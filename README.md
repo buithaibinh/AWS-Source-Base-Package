@@ -516,26 +516,3 @@ Functions:
 ## Mobile implementation<a name="sample4"></a>
 ### [Tutorial for Android](Mobile/Android)
 ### [Tutorial for iOS](Mobile/iOS)
-
-Note:
-- Repo structure
-  - Base
-    - Starter
-    - Sample Biz Folder
-  - Frontend
-    - VueJS branch
-      - Starter
-      - Sample Biz Folder
-    - Flutter branch
-      - Starter
-      - Sample Biz Folder
-  - Mobile
-    - IOS branch
-      - Starter
-      - Sample Biz Folder
-    - Android branch
-      - Starter
-      - Sample Biz Folder
-    - Flutter branch
-      - Starter
-      - Sample Biz Folder
