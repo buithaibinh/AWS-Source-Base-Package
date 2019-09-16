@@ -43,7 +43,7 @@ export PATH=$GEM_HOME/bin:$PATH
 For more detail, Reference https://guides.cocoapods.org/using/getting-started.html
 
 ## Download Starter source code
-Before starting, you should download [Starter Source Code](iOS/Starter) and do steps below. This is empty project which we added neccessary package for work with AWS.
+Before starting, you should download [Starter Source Code](./Starter/AWSDemoStarter) and do steps below. This is empty project which we added neccessary package for work with AWS.
 
 After download, open this project by X-Code and do below steps
 
@@ -373,4 +373,4 @@ let event = analyticsClient.createVirtualMonetizationEvent(
 analyticsClient.record(event)
 analyticsClient.submitEvents()
 ```
-### [Complete Source Code](iOS/Sample%20Biz)
+### [Complete Source Code](./Sample%20Biz/DemoAWS)
