@@ -35,5 +35,6 @@ Now you must do it by manual. Cloudformation is not suported now.
   https://skg-base.auth.ap-southeast-1.amazoncognito.com/login?response_type=code&client_id=4bct3drsjvgi4pe0crit6mj436&redirect_uri=https://www.example.com/
 
 
-2. Config
+2. Config SNS
 
+  - Update file configs/auth.json with facebookId, secretId.
