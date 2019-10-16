@@ -17,6 +17,7 @@ SKG Base uses the [serverless-webpack](https://github.com/serverless-heaven/serv
 - **Automatic support for multiple handler files**
   - No need to add a new entry to your `webpack.config.js`
 - **Add environment variables for your stages**
+1
 
 ---
 
